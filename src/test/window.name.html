@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>document.domain + iframe跨域</title>
+    <script type="text/javascript">
+        // 得到用户信息查询结果后的回调函数
+        var clickHandler = function () {
+            // 调用
+            // 服务器地址
+            var url = 'http://10.2.197.142:8082/src/test/jsonp.html';
+            // 处理数据 data就是window.name的值(string)
+            proxy(url, function (data) {
+                var user = JSON.parse(data);
+                console.log(user);
+                var str = '你查询的用户信息是：姓名： ' +
+                    user.name +
+                    '，ID：' + user.id +
+                    '，昵称：' + user.userName +
+                    '，年纪：' + user.age +
+                    ' 岁。';
+                document.getElementById('text').innerHTML = str;
+            });
+        };
+    </script>
+    <script type="text/javascript">
+        var proxy = function (url, callback) {
+            var state = 0;
+            // var state = 1;  // test 直接获取
+            var iframe = document.createElement('iframe');
+            // 加载跨域页面
+            iframe.src = url;
+            // onload事件会触发2次，第1次加载跨域页，并留存数据于window.name
+            iframe.onload = function () {
+                if (state === 1) {
+                    // 第2次onload(同域proxy页)成功后，读取同域window.name中数据
+                    callback(iframe.contentWindow.name);
+                    destoryFrame();
+                } else if (state === 0) {
+                    // 第1次onload(跨域页)成功后，切换到同域代理页面
+                    iframe.contentWindow.location = 'http://10.2.197.142:8081/src/test/proxy.html';
+                    state = 1;
+                }
+            };
+            document.body.appendChild(iframe);
+            // 获取数据以后销毁这个iframe，释放内存；这也保证了安全（不被其他域frame js访问）
+            function destoryFrame() {
+                iframe.contentWindow.document.write('');
+                iframe.contentWindow.close();
+                document.body.removeChild(iframe);
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div style="margin:20px;"> <button onclick="clickHandler()">查询信息</button></div>
+    <div id="text" style="margin:20px;">
+        你查询的用户信息是：姓名： XXX ，ID： XX ， 昵称： XXXX , 年纪： XX 岁。
+    </div>
+</body>
+
+</html>

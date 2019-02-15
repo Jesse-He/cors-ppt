@@ -1,0 +1,11 @@
+{
+    "name": "cors ppt",
+    "version": "0.0.1",
+    "description": "my cors ppt",
+    "dependencies": {},
+    "devDependencies": {
+        "fs": "0.0.1-security",
+        "http": "0.0.0",
+        "socket.io": "^2.2.0"
+    }
+}

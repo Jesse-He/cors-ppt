@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>proxy</title>
+</head>
+
+<body>
+    <div style="margin:20px;">
+        proxy
+    </div>
+    <div id="text" style="margin:20px;"></div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+<script>
+    var socket = io('http://10.2.197.142:9999');
+    socket.on('news', function (data) {
+        console.log(data);
+        document.getElementById('text').innerHTML = JSON.stringify(data);
+        socket.emit('my other event', { my: 'data' });
+    });
+</script>
+
+</html>

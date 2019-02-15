@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jsonp</title>
+    <script type="text/javascript">
+        // 得到用户信息查询结果后的回调函数
+        var callbackHandler = function (data) {
+            var str = '你查询的用户信息是：姓名： ' +
+                data.name +
+                '，ID：' + data.id +
+                '，昵称：' + data.userName +
+                '，年纪：' + data.age +
+                ' 岁。';
+            document.getElementById('text').innerHTML = str;
+            // alert(str);
+        };
+        var clickHandler = function () {
+            // 提供jsonp服务的url地址（不管是什么类型的地址，最终生成的返回值都是一段javascript代码）
+            var url =
+                'http://10.2.197.142:8082/src/test/jsonp.js?code=CA1998&callback=callbackHandler';
+            // 创建script标签，设置其属性
+            var script = document.createElement('script');
+            script.setAttribute('src', url);
+            // 把script标签加入head，此时调用开始
+            document.getElementsByTagName('head')[0].appendChild(script);
+        }
+        // window.name
+        window.name = '{"name":"王小米","userName":"wangxiaomi","id":"CA1998","age":18}';
+    </script>
+</head>
+
+<body>
+    <div style="margin:20px;"> <button onclick="clickHandler()">查询信息</button></div>
+    <div id="text" style="margin:20px;">
+        你查询的用户信息是：姓名： XXX ，ID： XX ， 昵称： XXXX , 年纪： XX 岁。
+    </div>
+</body>
+
+</html>

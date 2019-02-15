@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>postMessage2</title>
+</head>
+
+<body>
+    <div id="text" style="margin:20px;">
+        你查询的用户信息是：姓名： XXX ，ID： XX ， 昵称： XXXX , 年纪： XX 岁。
+    </div>
+</body>
+<script type="text/javascript">
+    // 接收domain1的数据
+    window.addEventListener('message', function (e) {
+        alert('data from domain1 ---> ' + e.data);
+        var data = JSON.parse(e.data);
+        if (data) {
+            document.getElementById('text').innerHTML = JSON.stringify(data);
+            data.did = 4234234234;
+            // 处理后再发回domain1
+            window.parent.postMessage(JSON.stringify(data), 'http://10.2.197.142:8081');
+        }
+    }, false);
+</script>
+
+</html>

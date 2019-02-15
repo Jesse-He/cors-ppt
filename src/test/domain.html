@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>document.domain + iframe跨域</title>
+    <script type="text/javascript">
+        // 得到用户信息查询结果后的回调函数
+        var clickHandler = function () {
+            var str = '你查询的用户信息是：姓名： ' +
+                user.name +
+                '，ID：' + user.id +
+                '，昵称：' + user.userName +
+                '，年纪：' + user.age +
+                ' 岁。';
+            document.getElementById('text').innerHTML = str;
+            // alert(str);
+        };
+    </script>
+    <script>
+        document.domain = 'domain.com';
+        var user = {
+            name: '王小米',
+            userName: 'wangxiaomi',
+            id: 'CA1998',
+            age: 18,
+        };
+    </script>
+</head>
+
+<body>
+    <iframe id="iframe" src="http://child.domain.com/b.html" width="700px;"></iframe>
+    <div style="margin:20px;"> <button onclick="clickHandler()">查询信息</button></div>
+    <div id="text" style="margin:20px;">
+        你查询的用户信息是：姓名： XXX ，ID： XX ， 昵称： XXXX , 年纪： XX 岁。
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>postMessage</title>
+</head>
+
+<body>
+    <iframe id="iframe" src="http://10.2.197.142:8082/src/test/postMessage2.html" width="700px;"></iframe>
+    <div id="text" style="margin:20px;">
+        你查询的用户信息是：姓名： XXX ，ID： XX ， 昵称： XXXX , 年纪： XX 岁。
+    </div>
+</body>
+<script>
+    var iframe = document.getElementById('iframe');
+    iframe.onload = function () {
+        var data = { "name": "王小米-1", "userName": "wangxiaomi", "id": "CA1998", "age": 18 };
+        // 向domain2传送跨域数据
+        iframe.contentWindow.postMessage(JSON.stringify(data), 'http://10.2.197.142:8082/src/test/postMessage2.html');
+    };
+    // 接受domain2返回数据
+    window.addEventListener('message', function (e) {
+        alert('data from domain2 ---> ' + e.data);
+        document.getElementById('text').innerHTML = e.data;
+    }, false);
+</script>
+
+</html>
