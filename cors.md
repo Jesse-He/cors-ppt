@@ -98,9 +98,9 @@ By 何天翔 {.text-intro.animated.delay-500.fadeInUp}
 
 #### :fa-github:
 
-[:fa-github: JSONP](http://10.2.197.142:8081/){.button}
+[:fa-github: JSONP](http://10.2.197.142:8081/src/test/jsonp.html){.button}
 
-* demo地址 ：  [http://10.2.197.142:8081/](http://10.2.197.142:8081/) 
+* demo地址 ：  [http://10.2.197.142:8081/](http://10.2.197.142:8081/src/test/jsonp.html) 
 
 </div> 
 
@@ -256,7 +256,7 @@ http://10.2.197.142:8081/src/test/domain.html
 
 [:fa-github: Cross-Origin](http://10.2.197.142:3000){.button}
 
-https://sso.toutiao.com/  https://www.ixigua.com/
+[:fa-github: www.ixigua.com](https://www.ixigua.com/){.button}
 
 </div> 
 
@@ -316,8 +316,16 @@ https://sso.toutiao.com/  https://www.ixigua.com/
 [:fa-github: WebSocket协议](http://10.2.197.142:8081/src/test/proxy.html){.button.text-subtitle.text-shadow.animated.lightSpeedIn.delay-1s}
 
 
-<slide class="bg-blue aligncenter" video="https://webslides.tv/static/videos/working.mp4 poster='https://webslides.tv/static/images/working.jpg' .dark autoplay loop"> 
+<slide class="bg-blue aligncenter" video="https://webslides.tv/static/videos/working.mp4  .dark autoplay loop"> 
 ## 谢 谢 {.text-landing.text-shadow.animated.lightSpeedIn}
 
 <slide class="bg-black aligncenter" image="https://source.unsplash.com/n9WPPWiPPJw/ .anim">
 ## Q&A {.text-landing.text-shadow}
+
+<slide class="bg-blue fullscreen aligncenter embed" youtube=".dark id='4F7sdy2rZws' allowfullscreen autoplay loop">
+## END {.text-landing.text-shadow}
+
+<!-- <slide class="bg-blue fullscreen aligncenter embed" youtube=".dark id='cvRZUJSo9Xc' allowfullscreen autoplay loop"> -->
+
+<!-- <slide  class="bg-blue fullscreen aligncenter embed" youtube=".dark id='_m67JbGjWnc' allowfullscreen autoplay loop"> -->
+
